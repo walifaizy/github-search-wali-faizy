@@ -1,0 +1,23 @@
+{
+  "name": "github-search-wali-faizy",
+  "version": "1.0.0",
+  "description": "Assignment",
+  "main": "index.js",
+  "author": "Wali Faizy",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "^9.2.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "devDependencies": {
+    "@types/node": "^9.4.6",
+    "@types/react": "^16.0.38",
+    "typescript": "^3.7.5"
+  }
+}

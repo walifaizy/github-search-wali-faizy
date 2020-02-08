@@ -1,0 +1,10 @@
+node_modules
+.next
+*.sublime-project
+*.sublime-workspace
+.vscode
+*.swp
+*.swo
+.idea
+.DS_STORE
+*~
