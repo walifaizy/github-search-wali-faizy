@@ -6,6 +6,6 @@ export type TUserData = {
   html_url: string;
 };
 
-export type TRepos = {
-  repos: object[] | null;
+export type TRepo = {
+  name: string;
 };

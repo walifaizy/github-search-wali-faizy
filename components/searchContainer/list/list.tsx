@@ -1,15 +1,18 @@
 import React from 'react';
-import { TUserData } from '../../../_types';
+import { TUserData, TRepo } from '../../../_types';
 
 type Props = {
   data: TUserData;
   isLoading: boolean;
+  repos: TRepo[];
+  isReposLoading: boolean;
 };
 
 const List = (props: Props) => {
-  const { data } = props;
+  const { data, repos, isReposLoading } = props;
 
-  const item = (
+  // PROFILE DATA
+  const profile = (
     <div>
       {data && data.avatar_url && <img src={data && data.avatar_url} />}
       <p>{data && data.name}</p>
@@ -19,7 +22,19 @@ const List = (props: Props) => {
     </div>
   );
 
-  return <div>{item}</div>;
+  //REPO LIST
+  const reposList =
+    repos &&
+    repos.map((repo, index) => {
+      return <div key={index}>{repo && repo.name}</div>;
+    });
+
+  return (
+    <div>
+      {profile}
+      {reposList}
+    </div>
+  );
 };
 
 export default List;
