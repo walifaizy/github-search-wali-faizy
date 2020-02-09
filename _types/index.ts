@@ -5,3 +5,7 @@ export type TUserData = {
   name: string;
   html_url: string;
 };
+
+export type TRepos = {
+  repos: object[] | null;
+};
