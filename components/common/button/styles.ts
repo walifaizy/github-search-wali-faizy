@@ -56,6 +56,14 @@ export default css`
       opacity: 0.2;
       transition: 0s;
     }
+    .ripple:disabled {
+      background: #f9f9f9;
+      color: #404553';
+    }
+
+    .ripple:disabled:hover {
+      background: #f9f9f9;
+    }
 
     .blue {
       color: #fff;

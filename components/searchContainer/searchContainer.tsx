@@ -2,26 +2,26 @@ import React, { Component } from 'react';
 import { SearchForm, List } from './index';
 import Styles from './styles';
 import Config from '../../config';
+import { TUserData } from '../../_types';
 
 type State = {
-  userList: object[];
-  userText: string;
+  user: TUserData | null;
   isLoading: boolean;
 };
 
 class Searchcontainer extends Component<State> {
-  state = {
-    userList: null,
+  state: State = {
+    user: null,
     isLoading: false,
   };
 
   // FUNCTION FOR GETTING SEARCHED USERS
   getUsers = (search: string) => {
-    const url = `${Config.baseURL}search/users?q=${search}`;
+    const url = `${Config.baseURL}users/${search}`;
     this.setState({ isLoading: true });
     fetch(url)
       .then(response => response.json())
-      .then(data => this.setState({ userList: data && data.items, isLoading: false }));
+      .then(data => this.setState({ user: data, isLoading: false }));
   };
 
   // ONCHANGE FUNCTION FOR INPUT
@@ -32,11 +32,11 @@ class Searchcontainer extends Component<State> {
   };
 
   render() {
-    const { userList } = this.state;
+    const { user, isLoading } = this.state;
     return (
       <div>
         <SearchForm onSubmit={this.getUsers} />
-        <List data={userList} />
+        {user && typeof user != 'undefined' && <List data={user} isLoading={isLoading} />}
         <style jsx>{Styles}</style>
       </div>
     );

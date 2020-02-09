@@ -15,7 +15,7 @@ const SearchForm = (props: Props) => {
   return (
     <div>
       <input type="text" name="userText" onChange={setInputValue} value={value} autoFocus />
-      <Button variant="blue" onClick={onFormSubmit}>
+      <Button disabled={!value} variant="blue" onClick={onFormSubmit}>
         Search
       </Button>
       <style jsx>{Styles}</style>
