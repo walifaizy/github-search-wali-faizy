@@ -13,7 +13,7 @@ export default css`
   }
   .imageCtr {
     width: 25%;
-    max-width: 86px;
+    max-width: 120px;
   }
   .imageCtr > img {
     display: block;

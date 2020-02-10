@@ -2,9 +2,6 @@ import css from 'styled-jsx/css';
 
 export default css`
    {
-    button > :global(i) {
-      margin-right: 8px;
-    }
     .ripple {
       padding: 0;
       margin: 0;
@@ -75,7 +72,7 @@ export default css`
     }
     .blue:active .active {
       opacity: 0.1;
-      background: #feee00;
+      background: #3866df;
     }
   }
 `;

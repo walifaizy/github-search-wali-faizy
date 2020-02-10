@@ -4,5 +4,6 @@ export default css`
   .wrapper {
     display: flex;
     flex-direction: column;
+    width: 70%;
   }
 `;

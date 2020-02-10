@@ -2,7 +2,6 @@ import css from 'styled-jsx/css';
 
 export default css`
   .formWrapper {
-    padding: 1rem 2rem;
     margin: 0 auto;
   }
   .formWrapper .title {
@@ -18,19 +17,9 @@ export default css`
     margin: 2rem 0;
   }
   .search > input {
-    background-color: #4b7bec;
     border: none;
-    color: #fff;
     font-size: 1rem;
     padding: 1rem;
     width: 80%;
-  }
-  :global(.searchBtn) {
-    background-color: #fff;
-    border: none;
-    color: #45aaf2;
-    cursor: pointer;
-    font-size: 1rem;
-    width: 20%;
   }
 `;

@@ -11,7 +11,7 @@ type Props = {
 
 const Button = (props: Props & HTMLProps<HTMLButtonElement>) => {
   const { variant, className, children, onClick, disabled } = props;
-  const variantClass = variant ? variant : 'primary';
+  const variantClass = 'blue';
   const concatClass = className || '';
   return (
     <button disabled={disabled} onClick={onClick} className={'ripple ' + variantClass + ' ' + concatClass}>

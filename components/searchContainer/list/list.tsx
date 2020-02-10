@@ -27,9 +27,7 @@ const List = (props: Props) => {
   const profile = (
     <div className="itemctr">
       <div className="item">
-        <div className="imageCtr">
-          <img src={data && data.avatar_url} />
-        </div>
+        <div className="imageCtr">{data && data.avatar_url && <img src={data && data.avatar_url} />}</div>
         <div className="summaryCtr"></div>
       </div>
       <style jsx>{Styles}</style>

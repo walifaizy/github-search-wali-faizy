@@ -9,12 +9,14 @@ type State = {
   isLoading: boolean;
   repos: TRepo[];
   isReposLoading: boolean;
+  error: string;
 };
 
 class Searchcontainer extends Component<void, State> {
   state: State = {
     user: null,
     isLoading: false,
+    error: '',
     repos: null,
     isReposLoading: false,
   };
@@ -31,15 +33,12 @@ class Searchcontainer extends Component<void, State> {
         return response.json();
       })
       .then(data => {
-        this.setState({ user: data, isLoading: false }, () => {
+        this.setState({ user: data, isLoading: false, error: '' }, () => {
           this.getRepos(search); // CALLING REPOS API
         });
       })
-      // .catch(error => {
-      //   this.setState({ isLoading: false, error: error.message });
-      // });
       .catch(error => {
-        this.setState({ isLoading: false });
+        this.setState({ isLoading: false, error: error.message });
       });
   };
 
@@ -56,7 +55,7 @@ class Searchcontainer extends Component<void, State> {
       })
       .then(data => this.setState({ repos: data ? data : '', isReposLoading: false }))
       .catch(error => {
-        this.setState({ isReposLoading: false });
+        this.setState({ isReposLoading: false, error: error.message });
       });
   };
 
@@ -70,16 +69,15 @@ class Searchcontainer extends Component<void, State> {
   };
 
   render() {
-    const { user, isLoading, isReposLoading, repos } = this.state;
+    const { user, isLoading, isReposLoading, repos, error } = this.state;
     return (
       <div className="wrapper">
         <div className="searchWrapper">
           <SearchForm onSubmit={this.getUsers} />
         </div>
         <div className="listWrapper">
-          {user && typeof user != 'undefined' && (
-            <List data={user} isLoading={isLoading} repos={repos} isReposLoading={isReposLoading} />
-          )}
+          {user ? <List data={user} isLoading={isLoading} repos={repos} isReposLoading={isReposLoading} /> : null}
+          {error ? error : ''}
         </div>
         <style jsx>{Styles}</style>
       </div>
