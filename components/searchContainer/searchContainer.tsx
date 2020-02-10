@@ -29,7 +29,13 @@ class Searchcontainer extends Component<void, State> {
         this.setState({ user: data, isLoading: false }, () => {
           this.getRepos(search); // CALLING REPOS API
         }),
-      );
+      ),
+      error => {
+        console.log(error);
+        this.setState({
+          isLoading: false,
+        });
+      };
   };
 
   // FUNCTION FOR GETTING USERS REPO
@@ -38,7 +44,13 @@ class Searchcontainer extends Component<void, State> {
     this.setState({ isReposLoading: true });
     fetch(url)
       .then(response => response.json())
-      .then(data => this.setState({ repos: data, isReposLoading: false }));
+      .then(data => this.setState({ repos: data ? data : '', isReposLoading: false })),
+      error => {
+        console.log(error);
+        this.setState({
+          isLoading: false,
+        });
+      };
   };
 
   // handle submit function for keyPress

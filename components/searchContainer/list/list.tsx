@@ -10,6 +10,7 @@ type Props = {
 
 const List = (props: Props) => {
   const { data, repos, isReposLoading } = props;
+  console.log(repos, 'repos');
 
   // PROFILE DATA
   const profile = (
