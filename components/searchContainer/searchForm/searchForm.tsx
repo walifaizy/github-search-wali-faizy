@@ -17,9 +17,9 @@ const SearchForm = (props: Props) => {
       <h2 className="title">React app to search github users</h2>
       <div className="search">
         <input type="text" name="userText" onChange={setInputValue} value={value} autoFocus />
-        <Button disabled={!value} variant="blue" onClick={onFormSubmit}>
+        <button disabled={!value} className="ripple" onClick={onFormSubmit}>
           Search
-        </Button>
+        </button>
       </div>
       <style jsx>{Styles}</style>
     </div>
