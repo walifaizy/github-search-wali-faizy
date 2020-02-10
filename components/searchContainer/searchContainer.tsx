@@ -24,18 +24,23 @@ class Searchcontainer extends Component<void, State> {
     const url = `${Config.baseURL}users/${search}`;
     this.setState({ isLoading: true });
     fetch(url)
-      .then(response => response.json())
-      .then(data =>
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(response.statusText);
+        }
+        return response.json();
+      })
+      .then(data => {
         this.setState({ user: data, isLoading: false }, () => {
           this.getRepos(search); // CALLING REPOS API
-        }),
-      ),
-      error => {
-        console.log(error);
-        this.setState({
-          isLoading: false,
         });
-      };
+      })
+      // .catch(error => {
+      //   this.setState({ isLoading: false, error: error.message });
+      // });
+      .catch(error => {
+        this.setState({ isLoading: false });
+      });
   };
 
   // FUNCTION FOR GETTING USERS REPO
@@ -43,14 +48,16 @@ class Searchcontainer extends Component<void, State> {
     const url = `${Config.baseURL}users/${search}/repos`;
     this.setState({ isReposLoading: true });
     fetch(url)
-      .then(response => response.json())
-      .then(data => this.setState({ repos: data ? data : '', isReposLoading: false })),
-      error => {
-        console.log(error);
-        this.setState({
-          isLoading: false,
-        });
-      };
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(response.statusText);
+        }
+        return response.json();
+      })
+      .then(data => this.setState({ repos: data ? data : '', isReposLoading: false }))
+      .catch(error => {
+        this.setState({ isReposLoading: false });
+      });
   };
 
   // handle submit function for keyPress
@@ -65,11 +72,15 @@ class Searchcontainer extends Component<void, State> {
   render() {
     const { user, isLoading, isReposLoading, repos } = this.state;
     return (
-      <div>
-        <SearchForm onSubmit={this.getUsers} />
-        {user && typeof user != 'undefined' && (
-          <List data={user} isLoading={isLoading} repos={repos} isReposLoading={isReposLoading} />
-        )}
+      <div className="wrapper">
+        <div className="searchWrapper">
+          <SearchForm onSubmit={this.getUsers} />
+        </div>
+        <div className="listWrapper">
+          {user && typeof user != 'undefined' && (
+            <List data={user} isLoading={isLoading} repos={repos} isReposLoading={isReposLoading} />
+          )}
+        </div>
         <style jsx>{Styles}</style>
       </div>
     );

@@ -13,11 +13,14 @@ const SearchForm = (props: Props) => {
   const onFormSubmit = () => onSubmit(value);
 
   return (
-    <div>
-      <input type="text" name="userText" onChange={setInputValue} value={value} autoFocus />
-      <Button disabled={!value} variant="blue" onClick={onFormSubmit}>
-        Search
-      </Button>
+    <div className="formWrapper">
+      <h2 className="title">React app to search github users</h2>
+      <div className="search">
+        <input type="text" className="searchBtn" name="userText" onChange={setInputValue} value={value} autoFocus />
+        <Button disabled={!value} variant="blue" onClick={onFormSubmit}>
+          Search
+        </Button>
+      </div>
       <style jsx>{Styles}</style>
     </div>
   );

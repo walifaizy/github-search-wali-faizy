@@ -23,7 +23,6 @@ export default css`
       overflow: hidden;
       transform: translate3d(0, 0, 0);
       transition: all ease-in 0.2s;
-      margin-bottom: 4px;
     }
     .ripple.active {
       background: transparent;

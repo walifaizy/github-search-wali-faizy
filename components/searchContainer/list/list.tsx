@@ -1,5 +1,6 @@
 import React from 'react';
 import { TUserData, TRepo } from '../../../_types';
+import Styles from './styles';
 
 type Props = {
   data: TUserData;
@@ -13,13 +14,25 @@ const List = (props: Props) => {
   console.log(repos, 'repos');
 
   // PROFILE DATA
+  // const profile = (
+  //   <div>
+  //     {data && data.avatar_url && <img src={data && data.avatar_url} />}
+  //     <p>{data && data.name}</p>
+  //     <a href={data && data.html_url} target="_blank">
+  //       View Profile
+  //     </a>
+  //   </div>
+  // );
+
   const profile = (
-    <div>
-      {data && data.avatar_url && <img src={data && data.avatar_url} />}
-      <p>{data && data.name}</p>
-      <a href={data && data.html_url} target="_blank">
-        View Profile
-      </a>
+    <div className="itemctr">
+      <div className="item">
+        <div className="imageCtr">
+          <img src={data && data.avatar_url} />
+        </div>
+        <div className="summaryCtr"></div>
+      </div>
+      <style jsx>{Styles}</style>
     </div>
   );
 
@@ -34,6 +47,7 @@ const List = (props: Props) => {
     <div>
       {profile}
       {reposList}
+      <style jsx>{Styles}</style>
     </div>
   );
 };
