@@ -2,7 +2,7 @@
 
 A single page application that consumes github search API
 
-# Deployment to Heroku
+# Running locally
 
 1. Clone the repository
 
