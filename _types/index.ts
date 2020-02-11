@@ -11,4 +11,5 @@ export type TRepo = {
     name: string;
     url: string;
     html_url: string;
+    description: string;
 };

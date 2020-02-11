@@ -19,13 +19,15 @@ export default ({ data, repos, isReposLoading }: Props) => (
                 <div className="imageCtr">{data && data.avatar_url && <img src={data && data.avatar_url} />}</div>
                 <div className="summaryCtr">
                     <div className="name">
-                        {data && data.name}
-                        &nbsp;
-                        {data && data.bio && <span className="bio">({(data && data.bio) || '-'})</span>}
+                        <div>
+                            {data && data.name}
+                            &nbsp;
+                            {data && data.bio && <span className="bio">({(data && data.bio) || '-'})</span>}
+                        </div>
+                        <a className="anchor" href={data && data.html_url} target="_blank">
+                            View Profile
+                        </a>
                     </div>
-                    <a className="anchor" href={data && data.html_url} target="_blank">
-                        View Profile
-                    </a>
                     <span className="email">
                         <strong>email: </strong> {(data && data.email) || '-'}
                     </span>
@@ -48,9 +50,12 @@ export default ({ data, repos, isReposLoading }: Props) => (
                                 <a href={repo && repo.html_url} target="_blank">
                                     {repo.html_url}
                                 </a>
-                                <span className="repoName">
-                                    <strong>Repo name</strong>: {repo.name}
-                                </span>
+                                <div className="repoName">
+                                    <strong>Repo name</strong>: {repo.name || '-'}
+                                </div>
+                                <div className="repoName">
+                                    <strong>Description</strong>: {repo.description || '-'}
+                                </div>
                             </div>
                         </div>
                     </div>

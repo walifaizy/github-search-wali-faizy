@@ -26,6 +26,8 @@ export default css`
         margin: 0px 15px 0px 15px;
     }
     .name {
+        display: flex;
+        justify-content: space-between;
         font-size: 1.2rem;
         font-weight: 600;
     }
