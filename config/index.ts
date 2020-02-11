@@ -1,3 +1,3 @@
 export default {
-  baseURL: 'https://api.github.com/',
+    baseURL: 'https://api.github.com/',
 };
