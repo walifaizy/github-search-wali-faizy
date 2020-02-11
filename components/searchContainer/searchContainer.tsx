@@ -24,7 +24,7 @@ class Searchcontainer extends Component<void, State> {
     // FUNCTION FOR GETTING SEARCHED USERS
     getUsers = (search: string) => {
         const url = `${Config.baseURL}users/${search}`;
-        this.setState({ isLoading: true });
+        this.setState({ isLoading: true, repos: null, user: null });
         fetch(url)
             .then(response => {
                 if (!response.ok) {
@@ -59,27 +59,23 @@ class Searchcontainer extends Component<void, State> {
             });
     };
 
-    // handle submit function for keyPress
-    onKeyPress = e => {
-        if (e.key !== 'Enter') {
-            return;
-        }
-
-        this.getUsers(e);
-    };
-
     render() {
         const { user, isLoading, isReposLoading, repos, error } = this.state;
 
         return (
             <div className="wrapper">
+                {/* SEARCH STARTS */}
                 <div className="searchWrapper">
                     <SearchForm onSubmit={this.getUsers} isLoading={isLoading} />
                 </div>
+                {/* SEARCH ENDS */}
+
+                {/* LIST STARTS */}
                 <div className="listWrapper">
                     {user ? <List data={user} repos={repos} isReposLoading={isReposLoading} /> : null}
-                    {error ? <div className="error">{error}</div> : ''}
+                    {error && !user ? <div className="error">{error}</div> : ''}
                 </div>
+                {/* LIST ENDS */}
                 <style jsx>{Styles}</style>
             </div>
         );

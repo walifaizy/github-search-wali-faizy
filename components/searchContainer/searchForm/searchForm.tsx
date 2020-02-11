@@ -10,14 +10,17 @@ const SearchForm = (props: Props) => {
     const { onSubmit, isLoading } = props;
     const [value, setValue] = useState('');
     const setInputValue = (e: { target: HTMLInputElement }) => setValue(e.target.value);
-    const onFormSubmit = () => onSubmit(value);
+    const onFormSubmit = (e: React.SyntheticEvent) => {
+        e.preventDefault();
+        onSubmit(value);
+    };
 
     return (
         <div className="formWrapper">
             <h2 className="title">React app to search github userss</h2>
-            <div className="search">
+            <form className="search" onSubmit={onFormSubmit}>
                 <input type="text" name="userText" onChange={setInputValue} value={value} autoFocus />
-                <button disabled={!value} className="ripple" onClick={onFormSubmit}>
+                <button disabled={!value} className="ripple">
                     {isLoading ? (
                         <div className="lds-ring">
                             <div></div>
@@ -26,7 +29,7 @@ const SearchForm = (props: Props) => {
                         'search'
                     )}
                 </button>
-            </div>
+            </form>
             <style jsx>{Styles}</style>
         </div>
     );
