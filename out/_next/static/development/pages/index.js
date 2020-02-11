@@ -496,7 +496,7 @@ var SearchForm = function SearchForm(props) {
       lineNumber: 17
     },
     __self: this
-  }, "React app to search github users"), __jsx("div", {
+  }, "React app to search github userss"), __jsx("div", {
     className: "jsx-".concat(_styles__WEBPACK_IMPORTED_MODULE_2__["default"].__hash) + " " + "search",
     __source: {
       fileName: _jsxFileName,
