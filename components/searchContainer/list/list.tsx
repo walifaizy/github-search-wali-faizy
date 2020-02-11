@@ -23,7 +23,7 @@ const List = (props: Props) => {
                     <div className="name">
                         {data && data.name}
                         &nbsp;
-                        <span className="bio">({(data && data.bio) || '-'})</span>
+                        {data && data.bio && <span className="bio">({(data && data.bio) || '-'})</span>}
                     </div>
                     <a className="anchor" href={data && data.html_url} target="_blank">
                         View Profile
@@ -51,7 +51,7 @@ const List = (props: Props) => {
                                 {repo.html_url}
                             </a>
                             <span className="repoName">
-                                <strong>Repo</strong>: {repo.name}
+                                <strong>Repo name</strong>: {repo.name}
                             </span>
                         </div>
                     </div>
@@ -71,7 +71,7 @@ const List = (props: Props) => {
                     </div>
                 </>
             ) : (
-                <div className="card">No Repository Created</div>
+                <div className="card">No repository found</div>
             )}
             <style jsx>{Styles}</style>
         </div>

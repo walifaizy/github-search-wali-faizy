@@ -19,6 +19,7 @@ export default css`
     .imageCtr > img {
         display: block;
         max-width: 100%;
+        border-radius: 5px;
     }
     .summaryCtr {
         flex: 1 1 0%;
