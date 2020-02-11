@@ -4,6 +4,7 @@ export type TUserData = {
   isLoading: boolean;
   name: string;
   html_url: string;
+  bio: string;
 };
 
 export type TRepo = {

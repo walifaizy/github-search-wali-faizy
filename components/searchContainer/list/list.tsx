@@ -1,6 +1,7 @@
 import React from 'react';
 import { TUserData, TRepo } from '../../../_types';
 import Styles from './styles';
+import { PlaceHolder } from '..';
 
 type Props = {
   data: TUserData;
@@ -10,7 +11,7 @@ type Props = {
 };
 
 const List = (props: Props) => {
-  const { data, repos, isReposLoading } = props;
+  const { data, repos, isReposLoading, isLoading } = props;
   console.log(repos, 'repos');
 
   // PROFILE DATA
@@ -28,7 +29,16 @@ const List = (props: Props) => {
     <div className="itemctr">
       <div className="item">
         <div className="imageCtr">{data && data.avatar_url && <img src={data && data.avatar_url} />}</div>
-        <div className="summaryCtr"></div>
+        <div className="summaryCtr">
+          <div className="name">
+            {data && data.name}
+            &nbsp;
+            <span className="bio">({data && data.bio})</span>
+          </div>
+          <a className="anchor" href={data && data.html_url} target="_blank">
+            View Profile
+          </a>
+        </div>
       </div>
       <style jsx>{Styles}</style>
     </div>
@@ -41,9 +51,15 @@ const List = (props: Props) => {
       return <div key={index}>{repo && repo.name}</div>;
     });
 
+  const placeHolder = (
+    <div>
+      <PlaceHolder width="100" height="150px" />
+    </div>
+  );
+
   return (
     <div>
-      {profile}
+      {isLoading ? <PlaceHolder width="100" height="150px" /> : profile}
       {reposList}
       <style jsx>{Styles}</style>
     </div>

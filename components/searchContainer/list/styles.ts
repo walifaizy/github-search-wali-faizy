@@ -21,6 +21,18 @@ export default css`
   }
   .summaryCtr {
     flex: 1 1 0%;
-    margin: 0px 15px 0px 0px;
+    margin: 0px 15px 0px 15px;
+  }
+  .name {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  .bio {
+    color: #3866df;
+  }
+  a {
+    margin: 6px 0 0 0;
+    font-size: 1rem;
+    display: block;
   }
 `;

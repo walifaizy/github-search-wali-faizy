@@ -70,10 +70,11 @@ class Searchcontainer extends Component<void, State> {
 
   render() {
     const { user, isLoading, isReposLoading, repos, error } = this.state;
+    console.log(isLoading, 'test');
     return (
       <div className="wrapper">
         <div className="searchWrapper">
-          <SearchForm onSubmit={this.getUsers} />
+          <SearchForm onSubmit={this.getUsers} isLoading={isLoading} />
         </div>
         <div className="listWrapper">
           {user ? <List data={user} isLoading={isLoading} repos={repos} isReposLoading={isReposLoading} /> : null}
