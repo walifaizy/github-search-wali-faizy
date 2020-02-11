@@ -9,4 +9,6 @@ export type TUserData = {
 
 export type TRepo = {
     name: string;
+    url: string;
+    html_url: string;
 };

@@ -77,9 +77,7 @@ class Searchcontainer extends Component<void, State> {
                     <SearchForm onSubmit={this.getUsers} isLoading={isLoading} />
                 </div>
                 <div className="listWrapper">
-                    {user ? (
-                        <List data={user} isLoading={isLoading} repos={repos} isReposLoading={isReposLoading} />
-                    ) : null}
+                    {user ? <List data={user} repos={repos} isReposLoading={isReposLoading} /> : null}
                     {error ? <div className="error">{error}</div> : ''}
                 </div>
                 <style jsx>{Styles}</style>

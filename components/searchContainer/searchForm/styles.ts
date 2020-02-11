@@ -21,6 +21,7 @@ export default css`
         font-size: 1rem;
         padding: 1rem;
         width: 80%;
+        font-weight: 600;
     }
     .ripple {
         padding: 0;

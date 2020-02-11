@@ -1,30 +1,20 @@
 import React from 'react';
 import { TUserData, TRepo } from '../../../_types';
 import Styles from './styles';
-import { PlaceHolder } from '..';
+
+// image fetching
+const github = '/static/images/github.svg';
 
 type Props = {
     data: TUserData;
-    isLoading: boolean;
     repos: TRepo[];
     isReposLoading: boolean;
 };
 
 const List = (props: Props) => {
-    const { data, repos, isReposLoading, isLoading } = props;
-    console.log(repos, 'repos');
+    const { data, repos, isReposLoading } = props;
 
-    // PROFILE DATA
-    // const profile = (
-    //   <div>
-    //     {data && data.avatar_url && <img src={data && data.avatar_url} />}
-    //     <p>{data && data.name}</p>
-    //     <a href={data && data.html_url} target="_blank">
-    //       View Profile
-    //     </a>
-    //   </div>
-    // );
-
+    //PROFULE CARD
     const profile = (
         <div className="itemctr">
             <div className="item">
@@ -33,11 +23,15 @@ const List = (props: Props) => {
                     <div className="name">
                         {data && data.name}
                         &nbsp;
-                        <span className="bio">({data && data.bio})</span>
+                        <span className="bio">({(data && data.bio) || '-'})</span>
                     </div>
                     <a className="anchor" href={data && data.html_url} target="_blank">
                         View Profile
                     </a>
+                    <span className="email">
+                        {' '}
+                        <strong>email: </strong> {(data && data.email) || '-'}
+                    </span>
                 </div>
             </div>
             <style jsx>{Styles}</style>
@@ -48,19 +42,37 @@ const List = (props: Props) => {
     const reposList =
         repos &&
         repos.map((repo, index) => {
-            return <div key={index}>{repo && repo.name}</div>;
+            return (
+                <div className="listItem" key={index}>
+                    <div className="top">
+                        <img src={github} className="repoImg" />{' '}
+                        <div>
+                            <a href={repo && repo.html_url} target="_blank">
+                                {repo.html_url}
+                            </a>
+                            <span className="repoName">
+                                <strong>Repo</strong>: {repo.name}
+                            </span>
+                        </div>
+                    </div>
+                    <style jsx>{Styles}</style>
+                </div>
+            );
         });
-
-    const placeHolder = (
-        <div>
-            <PlaceHolder width="100" height="150px" />
-        </div>
-    );
 
     return (
         <div>
-            {isLoading ? <PlaceHolder width="100" height="150px" /> : profile}
-            {reposList}
+            {profile}
+            {repos && repos.length > 0 ? (
+                <>
+                    <div className="repoTitle">Repository List</div>
+                    <div className="reposWrapper">
+                        {isReposLoading ? <div className="card">Loading...</div> : reposList}
+                    </div>
+                </>
+            ) : (
+                <div className="card">No Repository Created</div>
+            )}
             <style jsx>{Styles}</style>
         </div>
     );
