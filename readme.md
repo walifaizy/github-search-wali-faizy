@@ -1,4 +1,4 @@
-# react-github-search-app
+# github-search-wali-faizy
 
 A single page application that consumes github search API
 
