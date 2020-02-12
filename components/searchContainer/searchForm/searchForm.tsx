@@ -17,7 +17,7 @@ const SearchForm = (props: Props) => {
 
     return (
         <div className="formWrapper">
-            <h2 className="title">React app to search github userss</h2>
+            <h2 className="title">React app to search github users</h2>
             <form className="search" onSubmit={onFormSubmit}>
                 <input type="text" name="userText" onChange={setInputValue} value={value} autoFocus />
                 <button disabled={!value} className="ripple">
