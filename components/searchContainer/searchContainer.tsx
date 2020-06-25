@@ -60,7 +60,7 @@ class Searchcontainer extends Component<void, State> {
     };
 
     render() {
-        const { user, isLoading, isReposLoading, repos, error } = this.state; console.log("TEST")
+        const { user, isLoading, isReposLoading, repos, error } = this.state;
 
         return (
             <div className="wrapper">
